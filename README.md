@@ -13,8 +13,6 @@ You can see that sdp scales with the screen size and the dp stays with the same 
 
 # Getting Started
 
-See the [sdp_example.xml](https://github.com/intuit/sdp/blob/master/src/main/res/layout/sdp_example.xml) to see how to use to the sdp size unit.
-
 To add sdp to your project:
 
 1. Using Android Studio and Gradle: 
@@ -33,3 +31,4 @@ To add sdp to your project:
 
   add sdp as a library to your project.
 
+See the [sdp_example.xml](https://github.com/intuit/sdp/blob/master/src/main/res/layout/sdp_example.xml) to see how to use to the sdp size unit.
