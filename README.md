@@ -1,4 +1,4 @@
-# sdp
+# sdp - 1 layout for multiple screen sizes!
 An android SDK that provides a new size unit - sdp (scalable dp). This size unit scales with the screen size. It can help Android developers with supporting multiple screens.
 
 [Here](https://github.com/intuit/sdp/blob/master/src/main/res/layout/sdp_example.xml) is a single layout built using sdp:
