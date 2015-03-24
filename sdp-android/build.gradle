@@ -71,3 +71,4 @@ uploadArchives {
         }
     }
 }
+//gradlew.bat -Dhttp.proxyHost=192.168.10.254 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=192.168.10.254 -Dhttps.proxyPort=8080 uploadArchives --debug
