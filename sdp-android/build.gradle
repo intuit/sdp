@@ -13,62 +13,61 @@ buildscript {
 
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 22
+    buildToolsVersion "22"
 
     defaultConfig {
         minSdkVersion 10
-        targetSdkVersion 21
+        targetSdkVersion 22
     }
 }
 
-signing {
-    required { gradle.taskGraph.hasTask("uploadArchives") }
-    sign configurations.archives
-}
+//signing {
+//    required { gradle.taskGraph.hasTask("uploadArchives") }
+//    sign configurations.archives
+//}
 
-uploadArchives {
-    configuration = configurations.archives
-    repositories.mavenDeployer {
-        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-
-        repository(url: sonatypeRepo) {
-            authentication(userName: sonatypeUsername,
-                    password: sonatypePassword)
-        }
-
-        pom.groupId = 'com.intuit.sdp'
-        pom.artifactId = 'sdp-android'
-        pom.version = '1.0.0'
-
-        pom.project {
-            name 'sdp'
-            packaging 'aar'
-            description 'A scalable size unit for Andorid'
-            url 'https://github.com/intuit/sdp'
-
-            scm {
-                url 'https://github.com/intuit/sdp'
-                connection 'scm:git@github.com:intuit/sdp.git'
-                developerConnection 'scm:git@github.com:intuit/sdp.git'
-            }
-
-            licenses {
-                license {
-                    name 'The MIT License (MIT)'
-                    url 'https://github.com/intuit/sdp/blob/master/LICENSE'
-                    distribution 'repo'
-                }
-            }
-
-            developers {
-                developer {
-                    id developerID
-                    name developerName
-                    email developerEmail
-                }
-            }
-        }
-    }
-}
-//gradlew.bat -Dhttp.proxyHost=192.168.10.254 -Dhttp.proxyPort=8080 -Dhttps.proxyHost=192.168.10.254 -Dhttps.proxyPort=8080 uploadArchives --debug
+//uploadArchives {
+//    configuration = configurations.archives
+//    repositories.mavenDeployer {
+//        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+//
+//        repository(url: sonatypeRepo) {
+//            authentication(userName: sonatypeUsername,
+//                    password: sonatypePassword)
+//        }
+//
+//        pom.groupId = 'com.intuit.sdp'
+//        pom.artifactId = 'sdp-android'
+//        pom.version = '1.0.0'
+//
+//        pom.project {
+//            name 'sdp'
+//            packaging 'aar'
+//            description 'A scalable size unit for Andorid'
+//            url 'https://github.com/intuit/sdp'
+//
+//            scm {
+//                url 'https://github.com/intuit/sdp'
+//                connection 'scm:git@github.com:intuit/sdp.git'
+//                developerConnection 'scm:git@github.com:intuit/sdp.git'
+//            }
+//
+//            licenses {
+//                license {
+//                    name 'The MIT License (MIT)'
+//                    url 'https://github.com/intuit/sdp/blob/master/LICENSE'
+//                    distribution 'repo'
+//                }
+//            }
+//
+//            developers {
+//                developer {
+//                    id developerID
+//                    name developerName
+//                    email developerEmail
+//                }
+//            }
+//        }
+//    }
+//}
