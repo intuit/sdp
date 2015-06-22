@@ -3,6 +3,7 @@ An android SDK that provides a new size unit - sdp (scalable dp). This size unit
 
 # Attention
 Use it carefully! for example, in most cases you still need to design a different layout for tablets.
+The scaling is done approximately due to some constraints, avoid using it to get exact scale.
 
 # Example
 [Here](https://github.com/intuit/sdp/blob/master/sdp-android/src/main/res/layout/sdp_example.xml) is a single layout built using sdp:
