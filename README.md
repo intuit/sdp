@@ -36,3 +36,6 @@ To add sdp to your project:
   add sdp as a library to your project.
 
 See the [sdp_example.xml](https://github.com/intuit/sdp/blob/master/sdp-android/src/main/res/layout/sdp_example.xml) to see how to use to the sdp size unit.
+
+# Note
+The sdp size unit calculation includes some approximation due to some constraints.
