@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="dimention">values-large</string>
+	<string name="dimension">values-large</string>
 </resources>
