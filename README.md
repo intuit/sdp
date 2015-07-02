@@ -21,13 +21,13 @@ To add sdp to your project:
 
 1. Using Android Studio and Gradle: 
 
-  add compile 'com.intuit.sdp:sdp-android:1.0.0' to your build.gradle dependencies block.
+  add compile 'com.intuit.sdp:sdp-android:1.0.1' to your build.gradle dependencies block.
   
   for example:
   
   ```
   dependencies {
-    compile 'com.intuit.sdp:sdp-android:1.0.0'
+    compile 'com.intuit.sdp:sdp-android:1.0.1'
   }
   ```
   
