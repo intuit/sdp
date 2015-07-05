@@ -39,7 +39,7 @@ android {
 //
 //        pom.groupId = 'com.intuit.sdp'
 //        pom.artifactId = 'sdp-android'
-//        pom.version = '1.0.1'
+//        pom.version = '1.0.2'
 //
 //        pom.project {
 //            name 'sdp'
