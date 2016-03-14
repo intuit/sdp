@@ -22,52 +22,57 @@ android {
     }
 }
 
-//signing {
-//    required { gradle.taskGraph.hasTask("uploadArchives") }
-//    sign configurations.archives
-//}
+public class SDPFactory extends DefaultTask {
 
-//uploadArchives {
-//    configuration = configurations.archives
-//    repositories.mavenDeployer {
-//        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
-//
-//        repository(url: sonatypeRepo) {
-//            authentication(userName: sonatypeUsername,
-//                    password: sonatypePassword)
-//        }
-//
-//        pom.groupId = 'com.intuit.sdp'
-//        pom.artifactId = 'sdp-android'
-//        pom.version = '1.0.2'
-//
-//        pom.project {
-//            name 'sdp'
-//            packaging 'aar'
-//            description 'A scalable size unit for Andorid'
-//            url 'https://github.com/intuit/sdp'
-//
-//            scm {
-//                url 'https://github.com/intuit/sdp'
-//                connection 'scm:git@github.com:intuit/sdp.git'
-//                developerConnection 'scm:git@github.com:intuit/sdp.git'
-//            }
-//
-//            licenses {
-//                license {
-//                    name 'The MIT License (MIT)'
-//                    url 'https://github.com/intuit/sdp/blob/master/LICENSE'
-//                    distribution 'repo'
-//                }
-//            }
-//
-//            developers {
-//                developer {
-//                    id developerID
-//                    name developerName
-//                    email developerEmail
-//                }
-//            }
-//        }
-//    }
-//}
+    @Input
+    String unit = "dp"
+    @Input
+    double max = 300
+
+    @TaskAction
+    def create() {
+        String resFolder =  project.getProjectDir().getPath() + "/src/main/res/";
+        for(double dimen = 300; dimen <= 800 ; dimen = dimen + 30){
+            String folder = resFolder + "values-sw" + (int)dimen + "dp";
+            String fileName = folder + "/positive_sdps.xml";
+            new File(folder).mkdir();
+            new File(fileName).createNewFile();
+            PrintWriter printWriter = new PrintWriter(fileName);
+            printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+            printWriter.println("<resources>");
+            for(int i=1; i<=max; i++){
+                double ratio = i/300d;
+                double sdp = ratio*dimen;
+                printWriter.printf("\t<dimen name=\"_%dsdp\">%.2f" + unit + "</dimen>\r\n",i,sdp);
+            }
+            printWriter.println("</resources>");
+            printWriter.close();
+        }
+        for(double dimen = 300; dimen <= 800; dimen = dimen + 30){
+            String folder = resFolder + "values-sw" + (int)dimen + "dp";
+            String fileName = folder + "/negative_sdps.xml";
+            new File(folder).mkdir();
+            new File(fileName).createNewFile();
+            PrintWriter printWriter = new PrintWriter(fileName);
+            printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+            printWriter.println("<resources>");
+            for(int i=1;i<=max;i++){
+                double ratio = i/300d;
+                double sdp = ratio*dimen;
+                printWriter.printf("\t<dimen name=\"_minus%dsdp\">%.2f" + unit + "</dimen>\r\n",i,-sdp);
+            }
+            printWriter.println("</resources>");
+            printWriter.close();
+        }
+    }
+}
+
+task createSDP(type: SDPFactory) {
+}
+
+preBuild.dependsOn createSDP
+
+createSDP{
+    unit = "dp"//change to "sp" if needed
+    max = 300//change to 600 or any other value if needed
+}
