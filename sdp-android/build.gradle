@@ -72,6 +72,7 @@ public class SDPFactory extends DefaultTask {
 task createSDP(type: SDPFactory) {
 }
 
+//uncomment next line to edit values
 //preBuild.dependsOn createSDP
 
 createSDP{
