@@ -14,7 +14,7 @@ buildscript {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.0"
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         minSdkVersion 13
@@ -92,13 +92,13 @@ signing {
 //        beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
 //
 //        repository(url: sonatypeRepo) {
-//            authentication(userName: sonatypeUsername,
+//             authentication(userName: sonatypeUsername,
 //                    password: sonatypePassword)
 //        }
 //
 //        pom.groupId = 'com.intuit.sdp'
 //        pom.artifactId = 'sdp-android'
-//        pom.version = '1.0.3'
+//        pom.version = '1.0.4'
 //
 //        pom.project {
 //            name 'sdp'
