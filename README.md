@@ -1,6 +1,8 @@
 # SDP - a scalable size unit
 An android SDK that provides a new size unit - sdp (scalable dp). This size unit scales with the screen size. It can help Android developers with supporting multiple screens.
 
+for text views please reffer to [SSP](https://github.com/intuit/ssp) which is based on the sp size unit for texts. 
+
 # Attention
 Use it carefully! for example, in most cases you still need to design a different layout for tablets.
 
