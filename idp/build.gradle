@@ -1,0 +1,85 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+
+public class IDPFactory extends DefaultTask {
+
+    @Input
+    String unit = "dp"
+    @Input
+    double positiveMax = 600
+    @Input
+    double negativeMax = 60
+
+    @TaskAction
+    def create() {
+        String resFolder =  project.getProjectDir().getPath() + "/src/main/res/";
+        for(int dimen = 300; dimen <= 800 ; dimen = dimen + 30){
+            String folder = resFolder + "values-sw" + (int)dimen + "dp";
+            String fileName = folder + "/positive_idps.xml";
+            new File(folder).mkdir();
+            new File(fileName).createNewFile();
+            PrintWriter printWriter = new PrintWriter(fileName);
+            printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+            printWriter.println("<resources>");
+            for(double i=1; i<=positiveMax; i+=0.5){
+                double ratio = i/360d;
+                double idp = ratio*dimen;
+                printWriter.printf("\t<dimen name=\"_%fidp\">%.2f" + unit + "</dimen>\r\n",i,idp);
+            }
+            printWriter.println("</resources>");
+            printWriter.close();
+        }
+        for(int dimen = 300; dimen <= 800; dimen = dimen + 30){
+            String folder = resFolder + "values-sw" + (int)dimen + "dp";
+            String fileName = folder + "/negative_idps.xml";
+            new File(folder).mkdir();
+            new File(fileName).createNewFile();
+            PrintWriter printWriter = new PrintWriter(fileName);
+            printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+            printWriter.println("<resources>");
+            for(double i=1; i<=positiveMax; i+=0.5){
+                double ratio = i/360d;
+                double idp = ratio*dimen;
+                printWriter.printf("\t<dimen name=\"_minus%fidp\">%.2f" + unit + "</dimen>\r\n",i,-idp);
+            }
+            printWriter.println("</resources>");
+            printWriter.close();
+        }
+    }
+}
+
+task createIDP(type: IDPFactory) {
+}
+
+//uncomment next line to edit values
+//preBuild.dependsOn createIDP
+
+createIDP{
+    unit = "dp"//change to "sp" if needed
+    positiveMax = 600//change to 600 or any other value if needed
+    negativeMax = 60//change to 600 or any other value if needed
+}
