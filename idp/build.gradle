@@ -37,7 +37,7 @@ public class IDPFactory extends DefaultTask {
     @TaskAction
     def create() {
         String resFolder =  project.getProjectDir().getPath() + "/src/main/res/";
-        for(double dimen = 300; dimen <= 800 ; dimen = dimen + 30){
+        for(int dimen = 300; dimen <= 800 ; dimen = dimen + 30){
             String folder = resFolder + "values-sw" + (int)dimen + "dp";
             String fileName = folder + "/positive_idps.xml";
             new File(folder).mkdir();
@@ -48,12 +48,12 @@ public class IDPFactory extends DefaultTask {
             for(double i=1; i<=positiveMax; i+=0.5){
                 double ratio = i/360d;
                 double idp = ratio*dimen;
-                printWriter.printf("\t<dimen name=\"_%didp\">%.2f" + unit + "</dimen>\r\n",i,idp);
+                printWriter.printf("\t<dimen name=\"_%fidp\">%.2f" + unit + "</dimen>\r\n",i,idp);
             }
             printWriter.println("</resources>");
             printWriter.close();
         }
-        for(double dimen = 300; dimen <= 800; dimen = dimen + 30){
+        for(int dimen = 300; dimen <= 800; dimen = dimen + 30){
             String folder = resFolder + "values-sw" + (int)dimen + "dp";
             String fileName = folder + "/negative_idps.xml";
             new File(folder).mkdir();
@@ -64,7 +64,7 @@ public class IDPFactory extends DefaultTask {
             for(double i=1; i<=positiveMax; i+=0.5){
                 double ratio = i/360d;
                 double idp = ratio*dimen;
-                printWriter.printf("\t<dimen name=\"_minus%didp\">%.2f" + unit + "</dimen>\r\n",i,-idp);
+                printWriter.printf("\t<dimen name=\"_minus%fidp\">%.2f" + unit + "</dimen>\r\n",i,-idp);
             }
             printWriter.println("</resources>");
             printWriter.close();
