@@ -1,6 +1,9 @@
 build/generated/source/buildConfig/debug/com/intuit/sdp/BuildConfig.java
 build/
+.idea/
+.gradle/
 src/main/bin/
 src/main/gen/
 sdp_example.png
 dp_example.png
+/local.properties

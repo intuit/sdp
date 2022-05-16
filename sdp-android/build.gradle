@@ -1,32 +1,32 @@
 apply plugin: 'com.android.library'
-apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         maven {
             url 'https://maven.google.com/'
             name 'Google'
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:7.2.0'
     }
 }
 
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion "28.0.3"
+    compileSdkVersion 32
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         minSdkVersion 16
-        targetSdkVersion 28
+        targetSdkVersion 32
     }
 }
 
-public class SDPFactory extends DefaultTask {
+class SDPFactory extends DefaultTask {
 
     @Input
     String unit = "dp"
@@ -37,38 +37,38 @@ public class SDPFactory extends DefaultTask {
 
     @TaskAction
     def create() {
-        String resFolder =  project.getProjectDir().getPath() + "/src/main/res/";
-        for(double dimen = 300; dimen <= 800 ; dimen = dimen + 30){
-            String folder = resFolder + "values-sw" + (int)dimen + "dp";
-            String fileName = folder + "/positive_sdps.xml";
-            new File(folder).mkdir();
-            new File(fileName).createNewFile();
-            PrintWriter printWriter = new PrintWriter(fileName);
-            printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-            printWriter.println("<resources>");
+        String resFolder =  project.getProjectDir().getPath() + "/src/main/res/"
+        for(double dimen = 300; dimen <= 1080 ; dimen = dimen + 30){
+            String folder = resFolder + "values-sw" + (int)dimen + "dp"
+            String fileName = folder + "/positive_sdps.xml"
+            new File(folder).mkdir()
+            new File(fileName).createNewFile()
+            PrintWriter printWriter = new PrintWriter(fileName)
+            printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
+            printWriter.println("<resources>")
             for(int i=1; i<=positiveMax; i++){
-                double ratio = i/300d;
-                double sdp = ratio*dimen;
-                printWriter.printf("\t<dimen name=\"_%dsdp\">%.2f" + unit + "</dimen>\r\n",i,sdp);
+                double ratio = i/300d
+                double sdp = ratio*dimen
+                printWriter.printf("\t<dimen name=\"_%dsdp\">%.2f" + unit + "</dimen>\r\n",i,sdp)
             }
-            printWriter.println("</resources>");
-            printWriter.close();
+            printWriter.println("</resources>")
+            printWriter.close()
         }
-        for(double dimen = 300; dimen <= 800; dimen = dimen + 30){
-            String folder = resFolder + "values-sw" + (int)dimen + "dp";
-            String fileName = folder + "/negative_sdps.xml";
-            new File(folder).mkdir();
-            new File(fileName).createNewFile();
-            PrintWriter printWriter = new PrintWriter(fileName);
-            printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-            printWriter.println("<resources>");
+        for(double dimen = 300; dimen <= 1080; dimen = dimen + 30){
+            String folder = resFolder + "values-sw" + (int)dimen + "dp"
+            String fileName = folder + "/negative_sdps.xml"
+            new File(folder).mkdir()
+            new File(fileName).createNewFile()
+            PrintWriter printWriter = new PrintWriter(fileName)
+            printWriter.println("<?xml version=\"1.0\" encoding=\"utf-8\"?>")
+            printWriter.println("<resources>")
             for(int i=1;i<=negativeMax;i++){
-                double ratio = i/300d;
-                double sdp = ratio*dimen;
-                printWriter.printf("\t<dimen name=\"_minus%dsdp\">%.2f" + unit + "</dimen>\r\n",i,-sdp);
+                double ratio = i/300d
+                double sdp = ratio*dimen
+                printWriter.printf("\t<dimen name=\"_minus%dsdp\">%.2f" + unit + "</dimen>\r\n",i,-sdp)
             }
-            printWriter.println("</resources>");
-            printWriter.close();
+            printWriter.println("</resources>")
+            printWriter.close()
         }
     }
 }
