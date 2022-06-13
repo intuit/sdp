@@ -7,3 +7,4 @@ src/main/gen/
 sdp_example.png
 dp_example.png
 /local.properties
+/gradle.properties
