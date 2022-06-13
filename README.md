@@ -1,8 +1,8 @@
-[![issues](https://img.shields.io/github/issues/intuit/sdp)]
-[![Forks](https://img.shields.io/github/forks/intuit/sdp)]
-[![Stars](https://img.shields.io/github/stars/intuit/sdp)]
-[![License](https://img.shields.io/github/license/intuit/sdp)]
-[![Maven Central](https://img.shields.io/maven-central/v/com.intuit.sdp/sdp-android)]
+![issues](https://img.shields.io/github/issues/intuit/sdp)
+![Forks](https://img.shields.io/github/forks/intuit/sdp)
+![Stars](https://img.shields.io/github/stars/intuit/sdp)
+![License](https://img.shields.io/github/license/intuit/sdp)
+![Maven Central](https://img.shields.io/maven-central/v/com.intuit.sdp/sdp-android)
 
 # SDP - a scalable size unit
 An android lib that provides a new size unit - sdp (scalable dp). This size unit scales with the screen size. It can help Android developers with supporting multiple screens.
