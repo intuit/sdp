@@ -92,13 +92,6 @@ createSDP{
     negativeMax = 60//change to 600 or any other value if needed
 }
 
-repositories {
-    maven {
-        url 'https://maven.google.com/'
-        name 'Google'
-    }
-}
-
 publishing {
     publications {
         release(MavenPublication) {
