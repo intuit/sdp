@@ -94,12 +94,10 @@ createSDP{
 publishing {
     publications {
         release(MavenPublication) {
-
-            artifactId = 'sdp-android'
             groupId = 'com.intuit.sdp'
-            version = '1.1.0'
+            artifactId = 'sdp-android'
+            version = '1.1.1'
             artifact("$buildDir/outputs/aar/sdp-android-release.aar")
-
             pom {
                 name = 'sdp'
                 description = 'A scalable size unit for Andorid'

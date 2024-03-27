@@ -48,3 +48,9 @@
 * Version 1.1.0
 
   * Add SDPs up to sw1080 (fill the gap between 780 and 1080)
+
+### 2024-03-27
+
+* Version 1.1.1
+
+  * Update to com.android.tools.build:gradle:8.3.1
